@@ -37,7 +37,7 @@ const ComponentGoogleMapAutocomplete = () => {
                                 id: d?.place_id,
                             }})}
                         onChange={(event, newValue) => {
-                            store?.dispatch(addPlaceToList(newValue))
+                            if(newValue) return store?.dispatch(addPlaceToList(newValue))
                         }}
                     />
                 </div>
