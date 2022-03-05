@@ -1,6 +1,6 @@
 import { DataGrid } from '@mui/x-data-grid';
 import {useDispatch, useSelector} from "react-redux";
-import {Button} from "@mui/material";
+import {Grid} from "@mui/material";
 import {removePlaceFromList} from "../redux/actions/action";
 import ComponentDisplayCard from "./componentDisplayCard";
 
@@ -8,28 +8,14 @@ const ComponentDisplayLastLocation=()=>{
     const state = useSelector((state)=>state?.location)
     const dispatch = useDispatch()
 
-    const columns = [
-        {
-            field: 'delete',
-            headerName: 'Delete',
-            sortable:false,
-            width: 120,
-            renderCell:(params)=>{
-                const onClick = (e)=>{
-                    e.stopPropagation()
-                    dispatch(removePlaceFromList(params?.id))
-                }
-                return <Button color={"danger"} variant={"contained"} onClick={onClick}>Delete</Button>
-            }
-        },
-        { field: 'label', headerName: 'Location', width: 320 },
-    ];
-
     return (
-        <div style={{ height: 400, width:512, }}>
-            <DataGrid rows={state?.savedLocationList} columns={columns} pageSize={5} rowsPerPageOptions={[5]}/>
-            <ComponentDisplayCard/>
-        </div>
+        <Grid container spacing={2}>
+            {
+                state?.savedLocationList.map((d,i)=>{
+                    return <ComponentDisplayCard location={d?.label} key={i} onDelete={()=>dispatch(removePlaceFromList(d?.id))} randomId={d?.randomId}/>
+                })
+            }
+        </Grid>
     );
 }
 

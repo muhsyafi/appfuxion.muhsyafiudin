@@ -2,7 +2,7 @@ import './App.css';
 import * as React from 'react';
 import ComponentGoogleMapAutocomplete from "./components/componentGoogleMapAutocomplete";
 import ComponentDisplayLastLocation from "./components/componentDisplayLastLocation";
-import {Grid, ThemeProvider} from "@mui/material";
+import {Grid, Paper, ThemeProvider} from "@mui/material";
 import theme from "./themes/theme";
 
 function App() {
@@ -12,9 +12,7 @@ function App() {
                 <Grid item xs={3}>
                     <ComponentGoogleMapAutocomplete/>
                 </Grid>
-                <Grid item xs={3}>
-                    <ComponentDisplayLastLocation/>
-                </Grid>
+                <ComponentDisplayLastLocation/>
             </Grid>
         </ThemeProvider>
     </div>

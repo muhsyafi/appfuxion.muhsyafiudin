@@ -29,11 +29,11 @@ const ComponentGoogleMapAutocomplete = () => {
                         onChange={(event)=>{
                             getPlacePredictions({input:event?.target?.value})}}
                     />}
-                options={placePredictions.map((d)=>{
-                    console.log(d?.reference)
+                options={placePredictions.map((d,i)=>{
                     return {
                         label:d?.description,
                         id: d?.place_id,
+                        randomId : Math.floor((Math.random()*1000) + 1)
                     }})}
                 onChange={(event, newValue) => {
                     if(newValue) return dispatch(addPlaceToList(newValue))
