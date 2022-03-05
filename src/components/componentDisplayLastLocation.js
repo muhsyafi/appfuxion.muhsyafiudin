@@ -1,7 +1,6 @@
-import { DataGrid } from '@mui/x-data-grid';
 import {useDispatch, useSelector} from "react-redux";
 import {Grid} from "@mui/material";
-import {removePlaceFromList} from "../redux/actions/action";
+import {getMarker, recenterMap, removePlaceFromList} from "../redux/actions/action";
 import ComponentDisplayCard from "./componentDisplayCard";
 
 const ComponentDisplayLastLocation=()=>{
@@ -9,10 +8,16 @@ const ComponentDisplayLastLocation=()=>{
     const dispatch = useDispatch()
 
     return (
-        <Grid container spacing={2}>
+        <Grid container spacing={2} zIndex={100} position={'fixed'} bottom={0} left={0} padding={2}>
             {
                 state?.savedLocationList.map((d,i)=>{
-                    return <ComponentDisplayCard location={d?.label} key={i} onDelete={()=>dispatch(removePlaceFromList(d?.id))} randomId={d?.randomId}/>
+                    return <ComponentDisplayCard formattedAddress={d?.formatted_address} key={i} onDelete={()=>dispatch(removePlaceFromList(d?.place_id))} showOnMap={()=>{
+                        const location = {
+                            lat : d?.geometry?.location?.lat(),
+                            long : d?.geometry?.location?.lng(),
+                        }
+                        dispatch(recenterMap(location))
+                    }}/>
                 })
             }
         </Grid>

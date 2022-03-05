@@ -1,42 +1,36 @@
-import useGoogle from "react-google-autocomplete/lib/usePlacesAutocompleteService";
-import {Autocomplete, Grid, TextField} from "@mui/material";
-import {GOOGLE_MAP_API_KEY} from "../config/config";
+import {Autocomplete, TextField} from "@mui/material";
 import * as React from "react";
-import {addPlaceToList} from "../redux/actions/action";
-import { useDispatch} from "react-redux";
+import {getMapPrediction, getMarker} from "../redux/actions/action";
+import {useDispatch, useSelector} from "react-redux";
 
 const ComponentGoogleMapAutocomplete = () => {
     const dispatch = useDispatch();
-
-    const {
-        placePredictions,
-        getPlacePredictions,
-        isPlacePredictionsLoading,
-    } = useGoogle({
-        apiKey: GOOGLE_MAP_API_KEY,
-    });
+    const state = useSelector(state=>state?.location)
 
 
     return (
-        <div style={{width:512, marginBottom:16 }}>
+        <div style={{width:512, marginBottom:16, backgroundColor:'#fff', boxShadow:'inherit' }}>
             <Autocomplete
                 isOptionEqualToValue={(option, value)=>option.id===value.id}
-                loading={isPlacePredictionsLoading}
+                loading={false}
                 renderInput={(d)=>
                     <TextField
                         {...d}
                         label={"Type to search location"}
                         onChange={(event)=>{
-                            getPlacePredictions({input:event?.target?.value})}}
+                            dispatch(getMapPrediction(event?.target?.value))
+                        }}
                     />}
-                options={placePredictions.map((d,i)=>{
+                options={state?.locationList.map((d,i)=>{
                     return {
                         label:d?.description,
                         id: d?.place_id,
                         randomId : Math.floor((Math.random()*1000) + 1)
                     }})}
                 onChange={(event, newValue) => {
-                    if(newValue) return dispatch(addPlaceToList(newValue))
+                    if(newValue){
+                        dispatch(getMarker(newValue?.id))
+                    }
                 }}
             />
         </div>

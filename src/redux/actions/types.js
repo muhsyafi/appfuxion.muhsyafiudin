@@ -1,2 +1,5 @@
+export const GET_MAP_PLACES             = 'GET_MAP_PLACES'
 export const ADD_LOCATION_TO_LIST       = 'ADD_LOCATION_TO_LIST'
 export const REMOVE_FROM_LIST           = 'REMOVE_FROM_LIST'
+export const SET_ERROR_MESSAGE          = 'SET_ERROR_MESSAGE'
+export const SET_CENTER_MAP             = 'SET_CENTER_MAP'
