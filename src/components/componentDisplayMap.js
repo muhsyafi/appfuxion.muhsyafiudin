@@ -4,7 +4,6 @@ import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {googleMapLibrary} from "../consts/map";
 import ComponentMapMarkers from "./maps/componentMapMarkers";
-import {googleMapApiServiceDetailPlaces} from "../api/googleMapApiService";
 import {getMarkerFromMapClick} from "../redux/actions/action";
 
 const style = {
@@ -18,6 +17,7 @@ const ComponentDisplayMap=()=>{
     const dispatch = useDispatch()
 
 
+    /** Init Google maps widget */
     return <LoadScript
         id={'script-loader'}
         language={'en'}

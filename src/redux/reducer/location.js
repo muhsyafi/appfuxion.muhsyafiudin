@@ -5,8 +5,9 @@ import {
     SET_CENTER_MAP,
     SET_ERROR_MESSAGE, SET_LOADING
 } from "../actions/types";
-import {googleMapCenterInit, googleMapDefaultZoom} from "../../consts/map";
+import {googleMapCenterInit} from "../../consts/map";
 
+/** set default data for state*/
 const initialState = {
     loading : false,
     zoomMap : 8,

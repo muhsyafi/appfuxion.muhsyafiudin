@@ -7,7 +7,8 @@ const ComponentGoogleMapAutocomplete = () => {
     const dispatch = useDispatch();
     const state = useSelector(state=>state?.location)
 
-
+    /** Create autocomplete component
+     * The autocomplete data from list prediction from redux */
     return (
         <div style={{width:512, marginBottom:16, backgroundColor:'#fff', boxShadow:'inherit' }}>
             <Autocomplete

@@ -8,6 +8,7 @@ const ComponentDisplayLastLocation=()=>{
     const state = useSelector((state)=>state?.location)
     const dispatch = useDispatch()
 
+    /** Display all saved location search by user with iterate on bottom page with Card */
     return (
         <Grid container spacing={2} zIndex={100} position={'fixed'} bottom={0} left={0} padding={2}>
             {

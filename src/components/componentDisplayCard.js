@@ -2,6 +2,12 @@ import {Button, Card, CardActions, CardContent, Grid, Typography} from "@mui/mat
 import * as React from "react";
 
 const ComponentDisplayCard=(props)=>{
+
+    /** Check the address is undefined or not
+     * Address is not empty because get from auto complete or from click on map where location is register at google
+     * Undefined address is usually from click on map where location not register on google place
+     * If address undefined set address to lat long as string
+     * */
     let header = ''
     let address = props?.address
     if(address){

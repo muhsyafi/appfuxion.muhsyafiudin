@@ -1,5 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 
+/** Custom theme color for button*/
 const theme = createTheme({
     palette: {
         primary: {

@@ -1,4 +1,3 @@
-import './App.css';
 import * as React from 'react';
 import ComponentGoogleMapAutocomplete from "./components/componentGoogleMapAutocomplete";
 import ComponentDisplayLastLocation from "./components/componentDisplayLastLocation";

@@ -2,6 +2,8 @@ import {
     getGeocode,
 } from "use-places-autocomplete";
 
+
+/** Method for handle prediction place from Google map */
 export const googleMapApiServicePredictionPlaces = async (val)=>{
     const google = window.google
     const displaySugestion = (predictions, status)=>{
@@ -15,7 +17,7 @@ export const googleMapApiServicePredictionPlaces = async (val)=>{
 }
 
 
-
+/** Method for get detail place with place_id from Google map response object */
 export const googleMapApiServiceDetailPlaces = async (placeId)=>{
     try {
         let result = await getGeocode({placeId});
