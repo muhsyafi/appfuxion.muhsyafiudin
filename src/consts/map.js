@@ -4,3 +4,4 @@ export const googleMapCenterInit = {
 };
 
 export const googleMapLibrary = ['places']
+export const googleMapDefaultZoom = 8

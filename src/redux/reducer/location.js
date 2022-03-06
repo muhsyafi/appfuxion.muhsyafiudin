@@ -3,11 +3,13 @@ import {
     GET_MAP_PLACES,
     REMOVE_FROM_LIST,
     SET_CENTER_MAP,
-    SET_ERROR_MESSAGE
+    SET_ERROR_MESSAGE, SET_LOADING
 } from "../actions/types";
-import {googleMapCenterInit} from "../../consts/map";
+import {googleMapCenterInit, googleMapDefaultZoom} from "../../consts/map";
 
 const initialState = {
+    loading : false,
+    zoomMap : 8,
     centerLocation : googleMapCenterInit,
     errorMessage : '',
     textSearch : '',
@@ -41,9 +43,16 @@ const location = (state=initialState, action) => {
               errorMessage: action?.errorMessage
           }
       }
+      case SET_LOADING : {
+          return {
+              ...state,
+              loading: action?.loading
+          }
+      }
       case SET_CENTER_MAP : {
           return {
               ...state,
+              zoomMap: action?.zoom,
               centerLocation: action?.centerLocation
           }
       }
